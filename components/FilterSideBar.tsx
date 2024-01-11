@@ -5,6 +5,7 @@ import Select from "./ui/select";
 import { Button } from "./ui/button";
 import { JobFilterSchema } from "@/lib/Validation";
 import { redirect } from "next/navigation";
+import FormSubmitButton from "./FormSubmit";
 const FilterSideBar = async () => {
   const types = (await prisma.job
     .findMany({
@@ -67,7 +68,9 @@ const FilterSideBar = async () => {
             ))}
           </Select>
         </div>
-        <Button type="submit">Filter</Button>
+        <FormSubmitButton>
+          Filter
+        </FormSubmitButton>
       </form>
     </aside>
   );
