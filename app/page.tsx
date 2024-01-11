@@ -33,8 +33,8 @@ export default function Home({
         </h1>
         <p className="text-muted-foreground">Find your dream job</p>
       </div>
-      <div className="flex flex-row mt-10">
-        <FilterSideBar  />
+      <div className="flex flex-col gap-4 md:flex-row mt-10">
+        <FilterSideBar />
         <div className="flex-1">
           <JobContent filterValues={filterValues} />
         </div>

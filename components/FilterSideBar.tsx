@@ -38,7 +38,7 @@ const FilterSideBar = async () => {
     redirect(`/?${searchParams}`);
   }
   return (
-    <aside className="border rounded-lg p-4 bg-background sticky top-0 h-fit">
+    <aside className="border rounded-lg p-4 bg-background md:sticky top-0 h-fit">
       <form className="flex flex-col gap-3" action={formAction}>
         <div className="flex flex-col gap-2">
           <Label htmlFor="q">Search</Label>
