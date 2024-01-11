@@ -27,6 +27,9 @@ const JobContent = async ({filterValues: {q,type,location}}: JobContentProps) =>
       {jobs.map((job) => (
         <JobItem key={job.id} job={job} />
       ))}
+      {jobs.length === 0 && (
+        <p className="text-center font-bold text-2xl">No results found.</p>
+      )}
     </main>
   );
 };
