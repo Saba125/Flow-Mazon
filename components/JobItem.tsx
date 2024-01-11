@@ -20,10 +20,10 @@ const JobItem: React.FC<JobItemProps> = ({
           className="self-center"
         />
         <div className="grow">
-          <h3 className="font-bold"> {title} </h3>
+          <h3 className="font-bold dark:font-extralight"> {title} </h3>
           <p className="text-muted-foreground"> {companyName} </p>
           <div className="mt-3 flex flex-col gap-1">
-            <p className="text-muted-foreground flex flex-row gap-1.5 items-center">
+            <p className="text-muted-foreground   flex flex-row gap-1.5 items-center">
               {" "}
               <Briefcase size={16} /> {type}{" "}
             </p>

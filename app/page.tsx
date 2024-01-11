@@ -1,5 +1,6 @@
 import FilterSideBar from "@/components/FilterSideBar";
 import JobContent from "@/components/JobContent";
+import { ModeToggle } from "@/components/ModeToggle";
 import { JobFilterType } from "@/lib/Validation";
 import Image from "next/image";
 
@@ -14,7 +15,7 @@ export default function Home({
     location,
   };
   return (
-    <main className="max-w-5xl p-4 m-auto">
+    <main className="max-w-5xl p-4 m-auto relative">
       <div
         className="
       text-center
@@ -32,7 +33,11 @@ export default function Home({
           Developer jobs
         </h1>
         <p className="text-muted-foreground">Find your dream job</p>
+        <div className="self-end">
+        <ModeToggle />
       </div>
+      </div>
+     
       <div className="flex flex-col gap-4 md:flex-row mt-10">
         <FilterSideBar />
         <div className="flex-1">

@@ -6,18 +6,23 @@ import JobItem from "./JobItem";
 import { Prisma } from "@prisma/client";
 import { JobFilterType } from "@/lib/Validation";
 interface JobContentProps {
-  filterValues: JobFilterType
+  filterValues: JobFilterType;
 }
-const JobContent = async ({filterValues: {q,type,location}}: JobContentProps) => {
-  const where: Prisma.JobWhereInput = q ? {
-    
-    OR: [
-      {title: {contains: q}},
-      {type: {contains: type}},
-      {location: {contains: location}},
-
-    ]
-  } : {}
+const JobContent = async ({
+  filterValues: { q, type, location },
+}: JobContentProps) => {
+  const searchString: Prisma.JobWhereInput = q
+    ? {
+        AND: [
+          { title: { contains: q } },
+          { type: { contains: type } },
+          { location: { contains: location } },
+        ],
+      }
+    : {};
+  const where: Prisma.JobWhereInput = {
+    AND: [searchString, type ? { type } : {}, location ? { location } : {}],
+  };
   const jobs = await prisma.job.findMany({
     where,
     orderBy: { createdAt: "desc" },
