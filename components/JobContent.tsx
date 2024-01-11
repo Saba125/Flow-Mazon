@@ -1,10 +1,25 @@
-import { Briefcase, Clock, MapPin } from "lucide-react";
+import { Briefcase, Clock, MapPin, Search } from "lucide-react";
 import Image from "next/image";
 import prisma from "@/lib/prisma";
 import Badge from "./Badge";
-import JobItem from "./ui/JobItem";
-const JobContent = async () => {
+import JobItem from "./JobItem";
+import { Prisma } from "@prisma/client";
+import { JobFilterType } from "@/lib/Validation";
+interface JobContentProps {
+  filterValues: JobFilterType
+}
+const JobContent = async ({filterValues: {q,type,location}}: JobContentProps) => {
+  const where: Prisma.JobWhereInput = q ? {
+    
+    OR: [
+      {title: {contains: q}},
+      {type: {contains: type}},
+      {location: {contains: location}},
+
+    ]
+  } : {}
   const jobs = await prisma.job.findMany({
+    where,
     orderBy: { createdAt: "desc" },
   });
   return (

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Briefcase, MapPin, Clock, Banknote } from "lucide-react";
-import Badge from "../Badge";
+import Badge from "./Badge";
 import { Job } from "@prisma/client";
 import { formatMoney, formatTime } from "@/lib/format";
 interface JobItemProps {
@@ -10,7 +10,7 @@ const JobItem: React.FC<JobItemProps> = ({
   job: { title, companyName, type, location, locationType, salary, createdAt },
 }) => {
   return (
-    <article className="border p-5 rounded-lg hover:bg-muted/60">
+    <article className="border p-5 w-full rounded-lg hover:bg-muted/60">
       <div className="flex gap-3">
         <Image
           src="/company-logo-placeholder.png"
